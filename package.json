@@ -5,13 +5,14 @@
   "types": "dist/index.d.ts",
   "author": "Adam Pietrasiak",
   "license": "MIT",
-  
   "scripts": {
     "demo": "parcel demo/index.html -d demo-dist",
+    "demo:build": "parcel build demo/index.html -d demo-dist --public-url \"/react-ios-corners\"",
     "clean": "rimraf dist",
     "build:lib": "rollup --config",
     "build:types": "tsc --emitDeclarationOnly",
-    "build": "yarn clean && yarn build:lib && yarn build:types"
+    "build": "yarn clean && yarn build:lib && yarn build:types",
+    "gh-pages": "gh-pages -d demo-dist -b gh-pages"
   },
   "peerDependencies": {
     "react": "^17.0.1"
@@ -21,6 +22,7 @@
     "@types/react": "^16.9.56",
     "@types/react-dom": "^16.9.9",
     "@types/styled-components": "^5.1.4",
+    "gh-pages": "^3.1.0",
     "parcel-bundler": "^1.12.4",
     "react-dom": "^17.0.1",
     "rimraf": "^3.0.2",

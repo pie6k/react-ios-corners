@@ -1,5 +1,7 @@
 ## React ios corners
 
+demo - https://pie6k.github.io/react-ios-corners/
+
 ![Demo gif](demo.gif)
 
 Create ios like rounded corners (squircle). Comparsion with regular border radius:
