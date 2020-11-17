@@ -60,7 +60,7 @@ export function App() {
         <SquircleBase
           className="demo"
           radius={radius ?? undefined}
-          ratio={ratio}
+          roundness={ratio}
           style={{
             height: size + 'px',
             width: size + 'px',
@@ -73,7 +73,7 @@ export function App() {
         <ButtonSquircle
           className="demo"
           radius={radius ?? undefined}
-          ratio={ratio}
+          roundness={ratio}
           style={{
             height: size / 3 + 'px',
             width: size + 'px',

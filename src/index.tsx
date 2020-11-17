@@ -13,11 +13,10 @@ import { useObserveResize } from './resize';
 export interface SquircleProps {
   className?: string;
   radius?: number | 'auto';
-  ratio?: number;
+  roundness?: number;
 }
 
 export const DEFAULT_RATIO = iOSPreset.r1 / iOSPreset.r2;
-const DEFAULT_RADIUS = 15;
 
 interface Size {
   width: number;
@@ -59,7 +58,7 @@ export function Squircle(
     setSize({ width, height });
   }, []);
 
-  const { radius, ratio = DEFAULT_RATIO, className, ...htmlProps } = props;
+  const { radius, roundness = DEFAULT_RATIO, className, ...htmlProps } = props;
 
   const width = size.width ?? 0;
   const height = size.height ?? 0;
@@ -71,7 +70,7 @@ export function Squircle(
       ref={ref}
       style={{
         ...props.style,
-        ...cachedGetMaskStyle({ width, height, radius, ratio }),
+        ...cachedGetMaskStyle({ width, height, radius, roundness }),
         maskPosition: 'center',
         maskSize: 'contain',
         maskRepeat: 'no-repeat',
@@ -86,14 +85,14 @@ interface GetMaskStyleInput {
   width: number;
   height: number;
   radius?: number | 'auto';
-  ratio?: number;
+  roundness?: number;
 }
 
 export function getMaskStyle(input: GetMaskStyleInput): CSSProperties {
   const { width, height } = input;
 
   const maxBorderRadius = Math.min(width, height) / 2;
-  const { radius = maxBorderRadius, ratio = DEFAULT_RATIO } = input;
+  const { radius = maxBorderRadius, roundness = DEFAULT_RATIO } = input;
 
   const numberRadius = typeof radius === 'string' ? maxBorderRadius : radius;
 
@@ -102,7 +101,7 @@ export function getMaskStyle(input: GetMaskStyleInput): CSSProperties {
   const dataUri = getSquirclePathAsDataUri(
     width,
     height,
-    finalBorderRadius * ratio,
+    finalBorderRadius * roundness,
     finalBorderRadius,
   );
 
@@ -117,9 +116,9 @@ export function getMaskStyle(input: GetMaskStyleInput): CSSProperties {
 }
 
 const cachedGetMaskStyle = createMemoryCache(getMaskStyle, input => {
-  const { width, height, radius, ratio } = input;
+  const { width, height, radius, roundness } = input;
 
-  return `${width}-${height}-${radius}-${ratio}`;
+  return `${width}-${height}-${radius}-${roundness}`;
 });
 
 export interface SuperEllipseImgProps {
@@ -133,3 +132,5 @@ export interface SuperEllipseImgProps {
   strokeColor?: string;
   strokeWidth?: number;
 }
+
+export default Squircle;

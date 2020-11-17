@@ -1,14 +1,16 @@
 {
   "name": "react-ios-corners",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "author": "Adam Pietrasiak",
   "license": "MIT",
+  
   "scripts": {
     "demo": "parcel demo/index.html -d demo-dist",
     "clean": "rimraf dist",
     "build:lib": "rollup --config",
-    "build:types": "tsc",
+    "build:types": "tsc --emitDeclarationOnly",
     "build": "yarn clean && yarn build:lib && yarn build:types"
   },
   "peerDependencies": {
