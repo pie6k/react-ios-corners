@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "jsx": "react" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */,
+    "strict": true /* Enable all strict type-checking options. */,
+    "esModuleInterop": true,
+    "importHelpers": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true
+  },
+  "include": ["./src", "./types"]
+}
